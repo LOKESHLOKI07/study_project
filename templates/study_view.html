@@ -1,0 +1,117 @@
+<!-- studies/templates/studies/study_form.html -->
+<style>
+
+    /* studies/static/studies/styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.action-buttons a {
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+.add-btn {
+    background-color: #4CAF50;
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.delete-btn {
+    background-color: #d9534f;
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.action-buttons .view-btn {
+    background-color: #5bc0de;
+}
+
+.action-buttons .edit-btn {
+    background-color: #f0ad4e;
+}
+
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+form button {
+    padding: 10px 15px;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+form .save-btn {
+    background-color: #007BFF;
+}
+
+form .cancel-btn {
+    background-color: #d9534f;
+}
+
+</style>
+<h1>{% if form.instance.pk %}Edit{% else %}Add{% endif %} Study</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" style="background-color: #007bff; color: white; padding: 10px 15px; border: none; border-radius: 3px; cursor: pointer;">Save</button>
+
+    <a href="{% url 'study_list' %}">Cancel</a>
+</form>
